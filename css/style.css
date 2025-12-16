@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #111;
+  color: #fff;
+  padding: 15px 40px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+section {
+  padding: 60px 40px;
+  min-height: 200px;
+}
+
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
