@@ -56,3 +56,29 @@ dots.click(function () {
   quoteIndex = $(this).index();
   showQuote(quoteIndex);
 });
+// CONTACT FORM VALIDATE
+$("#contactForm").submit(function (e) {
+  e.preventDefault();
+
+  let name = $("#name").val().trim();
+  let email = $("#email").val().trim();
+  let phone = $("#phone").val().trim();
+  let message = $("#message").val().trim();
+
+  if (name === "" || email === "" || phone === "" || message === "") {
+    $(".form-message").css("color", "red").text("Vui lòng nhập đầy đủ thông tin.");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    $(".form-message").css("color", "red").text("Email không hợp lệ.");
+    return;
+  }
+
+  $(".form-message")
+    .css("color", "lightgreen")
+    .text("Gửi liên hệ thành công! Chúng tôi sẽ phản hồi sớm.");
+
+  // reset form
+  $("#contactForm")[0].reset();
+});

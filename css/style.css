@@ -780,3 +780,73 @@ nav a:hover {
     grid-template-columns: 1fr;
   }
 }
+/* ===== CONTACT PAGE ===== */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.contact-info h3,
+.contact-form h3 {
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  color: #bbb;
+}
+
+/* FORM */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #e10600;
+}
+
+/* BUTTON */
+.contact-form button {
+  background: #e10600;
+  border: none;
+  padding: 15px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #fff;
+  color: #e10600;
+}
+
+/* MESSAGE */
+.form-message {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
