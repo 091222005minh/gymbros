@@ -5,19 +5,44 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+    font-family: 'Oswald', Arial, sans-serif;
+    background-color: #121212; /* Màu đen nhám (không phải đen kịt) giúp dịu mắt */
+    color: #e0e0e0;            /* Màu chữ trắng hơi xám (Smoke White) để đọc lâu không mỏi */
 }
 
 header {
-  background: #111;
-  color: #fff;
-  padding: 15px 40px;
+    background: linear-gradient(
+        to bottom,
+        #0f0f0f,
+        #050505
+    );
+    padding: 15px 5%;
+    
+    /* --- SỬA Ở ĐÂY --- */
+    /* Dùng lệnh này để chắc chắn xóa bỏ mọi đường viền */
+    border: none !important; 
+    /* ---------------- */
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Đôi khi bóng đổ (shadow) trên nền tối nhìn sẽ giống đường viền.
+       Nếu bạn muốn header hòa tan hoàn toàn vào nền, hãy thử xóa dòng box-shadow này đi */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+nav h1 {
+    font-size: 28px;
+    letter-spacing: 3px; /* Giãn chữ logo ra nhìn sang hơn */
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
 }
 
 nav ul {
@@ -26,27 +51,69 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 nav a {
-  color: #fff;
-  text-decoration: none;
+    color: #b0b0b0;    /* Mặc định màu xám khói, không để trắng tinh nhìn sẽ bị gắt */
+    text-decoration: none;
+    font-size: 14px;   /* Chữ menu nhỏ gọn lại một chút */
+    font-weight: 600;  /* Độ đậm vừa phải */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+}
+nav a:hover {
+    color: #e10600; /* Màu đỏ thương hiệu */
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.5); /* Hiệu ứng chữ phát sáng nhẹ kiểu đèn Neon */
 }
 
 section {
-  padding: 60px 40px;
-  min-height: 200px;
+    padding: 80px 10%;
+    min-height: 200px;
+    
+    /* KHÔI PHỤC LẠI DÒNG NÀY (để các mục Giới thiệu, Dịch vụ... có kẻ ngang) */
+    border-bottom: 1px solid #222; 
+}
+section h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 30px;
+    
+    /* Điểm nhấn quan trọng: Vạch đỏ bên trái */
+    border-left: 5px solid #990400; 
+    padding-left: 20px;
+    line-height: 1;
+}
+section p {
+    font-family: sans-serif; /* Dùng font thường cho dễ đọc nội dung dài */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #b3b3b3; /* Màu xám nhạt */
+    margin-bottom: 20px;
 }
 
 footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+    background-color: #050505; /* Đồng bộ màu với Header */
+    border-top: 1px solid #222; /* Đường kẻ mờ phía trên */
+    padding: 40px 20px;        /* Tăng độ dày footer lên nhìn cho bề thế */
+    text-align: center;
+}
+footer p {
+    color: #666;              /* Chữ màu xám tối, không làm người xem mất tập trung */
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 0;
+    font-family: sans-serif;   /* Dùng font đơn giản cho copyright */
+}
+/* Gợi ý: Nếu bạn muốn Footer xịn hơn, có thể thêm hiệu ứng khi rê vào chữ */
+footer p:hover {
+    color: #e10600;
+    cursor: default;
+    transition: 0.3s;
 }
 /* ===== STEP 1: HEADER FIXED + HOVER ===== */
-
 header {
   position: sticky;
   top: 0;
@@ -57,10 +124,34 @@ nav a:hover {
   color: #e10600;
 }
 .banner {
-  position: relative;
-  height: 500px;
-  overflow: hidden;
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    
+    /* --- THÊM DÒNG NÀY --- */
+    /* Xóa đường viền chỉ riêng cho Banner để không bị vạch trắng cắt ngang gradient */
+    border-bottom: none !important;
+    /* -------------------- */
 }
+/* Tạo lớp phủ gradient để làm mờ phần đáy ảnh */
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  /* Gradient nhẹ hơn + có chiều sâu */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(18, 18, 18, 0.75) 100%
+  );
+
+  z-index: 5;
+  pointer-events: none;
+}
+
+
 
 .slide {
   width: 100%;
@@ -71,6 +162,7 @@ nav a:hover {
   left: 0;
   opacity: 0;
   transition: opacity 1s;
+  filter: contrast(1.05) brightness(0.95);
 }
 
 .slide.active {
@@ -84,4 +176,453 @@ nav a:hover {
   transform: translate(-50%, -50%);
   color: #fff;
   text-align: center;
+  /* THÊM DÒNG NÀY ĐỂ CHỮ LUÔN NỔI LÊN TRÊN CÙNG */
+  z-index: 10;
+  width: 100%; /* Đảm bảo căn giữa chuẩn */
+}
+/* ===== BANNER TEXT STYLE (PHẦN 2) ===== */
+
+/* Sửa lại khung chung của thẻ h2 */
+.banner-text h2 {
+  font-size: 72px;        
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;         /* Khoảng cách giữa 2 dòng sát lại cho đẹp */
+  margin-bottom: 15px;    /* Đẩy dòng chữ nhỏ ở dưới ra xa một chút */
+  
+  /* Thêm bóng đổ màu đen để chữ nổi lên trên nền ảnh */
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+}
+
+/* Chỉnh dòng trên (TRAIN HARD) màu TRẮNG */
+.banner-text .main-text {
+  color: #d5d3d3;
+  display: inline-block; /* Giữ khối chắc chắn */
+}
+
+/* Chỉnh dòng dưới (STAY STRONG) màu ĐỎ chủ đạo */
+.banner-text .sub-text {
+  color: #990400;
+  letter-spacing: 5px;
+  display: inline-block;
+  /* THÊM DÒNG NÀY: Tạo hiệu ứng phát sáng đỏ nhẹ */
+  text-shadow: 0 0 20px rgba(225, 6, 0, 0.6);
+}
+
+.banner-text p {
+    display: inline-block;
+    background-color: #990400;
+    color: #fff;
+    
+    font-family: 'Oswald', sans-serif;
+    /* Tăng kích thước chữ lên */
+    font-size: 20px; 
+    /* Chữ đậm hơn để không bị chìm */
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Tăng độ dày của nút (Padding) */
+    /* 15px trên dưới, 50px trái phải -> Tạo cảm giác bề thế */
+    padding: 18px 60px; 
+    
+    margin-top: 40px;
+    
+    /* Tạo hình bình hành (nghiêng nhẹ) - Đặc trưng của web thể thao/tốc độ */
+    transform: skewX(-10deg); 
+    
+    /* Shadow nhẹ để tách nền */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Đảm bảo chữ bên trong đứng thẳng lại (nếu muốn chữ cũng nghiêng thì bỏ dòng này) */
+    /* Nếu để nguyên thì cả khung và chữ đều nghiêng -> Nhìn rất động */
+}
+.banner-text p:hover {
+    background-color: #fff; 
+    color: #990400; /* Chữ chuyển đỏ */
+    
+    /* Nút nẩy lên một chút */
+    transform: skewX(-10deg) translateY(-5px); 
+    
+    /* Bóng đổ đậm hơn */
+    box-shadow: 0 15px 25px rgba(225, 6, 0, 0.4); 
+}
+/* ===== GALLERY ===== */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.gallery-img {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+/* ===== LIGHTBOX ===== */
+
+.lightbox {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95); /* Nền đen tối đa */
+    z-index: 2000;
+    
+    /* Ẩn mặc định */
+    display: none;
+}
+/* Khi thêm class 'active' bằng JS thì mới hiện ra */
+.lightbox.active {
+    display: flex !important; 
+}
+
+.lightbox-img {
+    /* ... giữ nguyên các thuộc tính position, top, left, transform ... */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+
+    /* --- SỬA PHẦN NÀY --- */
+    
+    /* Xóa viền đỏ cũ nếu có */
+    border: none; 
+
+    /* Tạo Glow màu trắng xám nhẹ (Smoke) */
+    /* Cấu trúc: x y blur spread color */
+    box-shadow: 0 0 40px -5px rgba(255, 255, 255, 0.15); 
+    
+    /* Thêm một viền siêu mảnh màu xám tối để định hình khung ảnh rõ hơn */
+    border: 1px solid #333;
+
+    /* --- HẾT PHẦN SỬA --- */
+
+    animation: zoomCenter 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+/* Hiệu ứng phóng to đàn hồi nhẹ */
+@keyframes zoomCenter {
+    from { 
+        transform: translate(-50%, -50%) scale(0.6); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 1; 
+    }
+}
+/* Nút đóng */
+.lightbox .close {
+    position: absolute;
+    top: 20px; 
+    right: 40px;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2002;
+    line-height: 1;
+}
+.lightbox .close:hover {
+    color: #e10600;
+    text-shadow: 0 0 15px #e10600;
+}
+/* ===== HOME VALUE SECTION ===== */
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  padding: 120px 10%;
+  background: #f5f5f5; /* ✨ thay vì #fff */
+  color: #000;
+  text-align: center;
+}
+
+
+
+.value-box h3 {
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.value-box p {
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .values {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== TESTIMONIAL ===== */
+.testimonial {
+  padding: 120px 15%;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+.testimonial-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.testimonial blockquote {
+  font-size: 22px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-family: sans-serif;
+}
+
+.testimonial h4 {
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.testimonial span {
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 2px;
+}
+/* ===== CTA SECTION ===== */
+.cta {
+  position: relative;
+  background: url('../images/cta-bg.jpg') center/cover no-repeat;
+  padding: 120px 10%;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+.cta-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+.cta h2 {
+  font-size: 48px;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-outline {
+  padding: 15px 40px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-red {
+  padding: 15px 40px;
+  background: #e10600;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btn-red:hover {
+  background: #fff;
+  color: #e10600;
+}
+/* ===== SECTION TITLE (UFC STYLE) ===== */
+.section-title {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 50px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 5px;
+  height: 55px;
+  background: #990400;
+}
+
+/* Chữ nhỏ */
+.section-title .subtitle {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+/* Chữ lớn */
+.section-title h2 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border: none; /* QUAN TRỌNG: chặn border-left cũ */
+}
+/* ===== QUOTE SLIDER ===== */
+.quote-slider {
+  background: #fff;
+  color: #111;
+  padding: 120px 15%;
+  text-align: center;
+  position: relative;
+}
+
+.quote-slide {
+  display: none;
+  animation: fadeQuote 0.8s ease;
+}
+
+.quote-slide.active {
+  display: block;
+}
+
+.quote-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 25px;
+
+  border: 4px solid #eee;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+.quote-slide blockquote {
+  font-size: 26px;           /* to hơn */
+  line-height: 1.45;         /* sít lại */
+  margin: 30px auto 35px;    /* giảm khoảng trắng */
+  max-width: 900px;
+  font-family: 'Georgia', serif; /* cảm giác quote cao cấp */
+  color: #111;
+}
+
+
+.quote-slide h4 {
+  font-size: 18px;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+
+.quote-slide span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #999;
+}
+
+
+/* DOTS */
+.quote-dots {
+  margin-top: 30px;
+}
+
+.quote-dots .dot {
+  display: inline-block;
+  width: 60px;
+  height: 6px;
+  background: #999;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.quote-dots .dot.active {
+  background: #e10600;
+}
+
+/* FADE EFFECT */
+@keyframes fadeQuote {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===== QUOTE FRAME – VISIBLE VERSION ===== */
+.quote-slider {
+  position: relative;
+  background: #fff;
+  color: #111;
+  padding: 180px 15%;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* LINE TRÊN */
+.quote-slider::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 85%;
+  height: 3px; /* ⬅ ĐẬM HƠN */
+  background: linear-gradient(
+    to right,
+    transparent,
+    #000,
+    transparent
+  );
+  transform: translateX(-50%);
+  opacity: 0.25; /* mềm hơn */
+}
+
+/* LINE DƯỚI */
+.quote-slider::after {
+  content: '';
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  width: 85%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #000,
+    transparent
+  );
+  transform: translateX(-50%);
+  opacity: 0.25;
 }

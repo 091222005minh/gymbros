@@ -3,65 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <title>GYMBROS</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <nav>
-      <h1>GYMBROS</h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">Giới thiệu</a></li>
-        <li><a href="#services">Dịch vụ</a></li>
-        <li><a href="#gallery">Hình ảnh</a></li>
-        <li><a href="#contact">Liên hệ</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <h1>GYMBROS</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">Giới thiệu</a></li>
+      <li><a href="services.html">Dịch vụ</a></li>
+      <li><a href="contact.html">Liên hệ</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- HOME -->
-<section id="home" class="banner">
-  <img src="images/slide1.jpg" class="slide active">
-  <img src="images/slide2.jpg" class="slide">
-  <img src="images/slide3.jpg" class="slide">
+<!-- HERO -->
+<section class="banner">
+  <img src="images/slide-1.jpg" class="slide active">
+  <img src="images/slide-2.jpg" class="slide">
+  <img src="images/slide-3.jpg" class="slide">
 
   <div class="banner-text">
-    <h2>TRAIN HARD. STAY STRONG.</h2>
-    <p>Join GYMBROS Gym Today</p>
+    <h2>
+      <span class="main-text">TRAIN HARD.</span><br>
+      <span class="sub-text">STAY STRONG.</span>
+    </h2>
+    <p onclick="location.href='services.html'">Join GYMBROS Gym Today</p>
   </div>
 </section>
 
-  </section>
+<!-- VALUE PROPOSITION -->
+<section class="values">
+  <div class="value-box">
+    <h3>LOW INVESTMENT COST</h3>
+    <p>Affordable membership plans with high-quality equipment and training.</p>
+  </div>
+  <div class="value-box">
+    <h3>POWERFUL BRAND</h3>
+    <p>GYMBROS is built for strength, discipline, and real results.</p>
+  </div>
+  <div class="value-box">
+    <h3>FITNESS FOR ALL</h3>
+    <p>Programs designed for all ages and fitness levels.</p>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>Giới thiệu</h2>
-  </section>
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-title">
+    <span class="subtitle">Real training. Real results.</span>
+    <h2>GYMBROS TRAINING</h2>
+  </div>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <h2>Dịch vụ</h2>
-  </section>
+  <div class="gallery">
+    <img src="images/gallery-1.jpg" class="gallery-img">
+    <img src="images/gallery-2.jpg" class="gallery-img">
+    <img src="images/gallery-3.jpg" class="gallery-img">
+    <img src="images/gallery-4.jpg" class="gallery-img">
+  </div>
+</section>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <h2>Hình ảnh</h2>
-  </section>
+<section class="quote-slider">
+  <div class="quote-slide active">
+    <img src="images/quote-1.jpg" class="quote-avatar">
+    <blockquote>
+      “Strength does not come from winning. Your struggles develop your strengths.”
+    </blockquote>
+    <h4>ARNOLD SCHWARZENEGGER</h4>
+    <span>TRENGTH & MINDSET</span>
+  </div>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Liên hệ</h2>
-  </section>
+  <div class="quote-slide">
+    <img src="images/quote-2.jpg" class="quote-avatar">
+    <blockquote>
+      “Success isn’t always about greatness. It’s about consistency. Consistent hard work leads to success.”
+    </blockquote>
+    <h4>DWAYNE JOHNSON</h4>
+    <span>DISCIPLINE & CONSISTENCY</span>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2024 GYMBROS</p>
-  </footer>
+  <div class="quote-slide">
+    <img src="images/quote-3.jpg" class="quote-avatar">
+    <blockquote>
+      “Success usually comes to those who are too busy to be looking for it.”
+    </blockquote>
+    <h4>HENRY DAVID THOREAU</h4>
+    <span>FOCUS & DEDICATION</span>
+  </div>
 
-  <!-- SCRIPT -->
-  <script src="lib/jquery.min.js"></script>
-  <script src="js/main.js"></script>
+  <div class="quote-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-content">
+    <h2>READY TO TRANSFORM YOUR BODY?</h2>
+
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn-outline">CONTACT US</a>
+      <a href="about.html" class="btn-red">GET STARTED →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 GYMBROS</p>
+</footer>
+
+<script src="lib/jquery.min.js"></script>
+<script src="js/main.js"></script>
+
+<div class="lightbox" id="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" id="lightbox-img">
+</div>
+
 </body>
 </html>
