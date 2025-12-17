@@ -723,7 +723,7 @@ nav a:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
   padding: 100px 10%;
-  background: #121212;
+  background: #fff;
 }
 
 /* CARD */
@@ -849,4 +849,240 @@ nav a:hover {
   .contact-wrapper {
     grid-template-columns: 1fr;
   }
+}
+/* ===== ABOUT PAGE ===== */
+
+.page-banner {
+    position: relative;
+    background: linear-gradient(
+    to bottom,
+    #1a1a1a,
+    #050505
+  );
+  padding: 100px 10%;
+  text-align: center;
+}
+
+
+.page-banner h2 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  color: #fff;
+}
+
+.page-banner p {
+  color: #aaa;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.about-section {
+  padding: 100px 10%;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  padding: 100px 10%;
+  background: #121212;
+}
+
+.about-box h3 {
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.about-box p {
+  color: #b3b3b3;
+  line-height: 1.6;
+}
+
+.about-values {
+  padding: 120px 10%;
+  background: #f7f7f7; 
+
+}
+.about-values h3 {
+  color: #111;
+}
+
+.about-values p {
+  color: #555;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.value-item h3 {
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  color: #111;          /* 👈 ĐEN RÕ */
+  font-weight: 700;     /* 👈 ĐẬM */
+  text-transform: uppercase;
+}
+
+.value-item h4 {
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  color: #111; 
+}
+
+.value-item p {
+  color: #444;          /* 👈 Đậm hơn #b3b3b3 */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about-cta {
+  background: linear-gradient(
+    to bottom,
+    #050505,
+    #000
+  );
+  text-align: center;
+  padding: 100px 10%;
+}
+
+.about-cta h2 {
+  font-size: 40px;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .about-split,
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== ABOUT SPLIT HOVER EFFECT ===== */
+
+.hover-box {
+  background: #181818;
+  padding: 50px;
+  border: 1px solid #2a2a2a;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+/* Viền đỏ accent khi hover */
+.hover-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: #e10600;
+  transition: height 0.4s ease;
+}
+
+/* Hover effect */
+.hover-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  background: #1f1f1f;
+}
+
+.hover-box:hover::before {
+  height: 100%;
+}
+
+.hover-box h3 {
+  transition: color 0.3s ease;
+}
+
+.hover-box:hover h3 {
+  color: #e10600;
+}
+/* ===== ABOUT INTRO (2-COLUMN + HOVER) ===== */
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 120px 10%;
+  background: linear-gradient(
+    to right,
+    #121212,
+    #1a1a1a
+  );
+}
+
+.about-img {
+  overflow: hidden;
+}
+
+.about-img img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+}
+
+.about-img:hover img {
+  transform: scale(1.08);
+}
+
+.about-text h2 {
+  font-size: 46px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.about-text p {
+  max-width: 500px;
+  color: #b3b3b3;
+}
+
+.about-subtitle {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #990400;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+}
+.about-philosophy {
+  padding: 100px 20%;
+  text-align: center;
+  background: #0b0b0b;
+}
+
+.about-philosophy p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cfcfcf;
+}
+/* ===== ABOUT CORE VALUES – FIX CONTRAST ===== */
+
+.about-values {
+  background: #fafafa; /* trắng ngà, không gắt */
+}
+
+.about-values h3 {
+  color: #111;              /* ĐEN RÕ */
+  font-size: 20px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.about-values p {
+  color: #555;              /* xám đậm hơn */
+  font-size: 16px;
+  line-height: 1.6;
 }
